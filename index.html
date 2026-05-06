@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Alanfeer Liborius | Portafolio Full-Stack</title>
+    
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <meta name="description" content="Portafolio profesional de Alanfeer José Liborius González - Desarrollador Full-Stack especializado en PHP, JavaScript, MySQL y Linux.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#3b82f6',
+                            light: '#60a5fa',
+                            dark: '#2563eb',
+                        },
+                        // Modo oscuro MUY oscuro
+                        dark: {
+                            bg: '#0a0e17',      // Fondo principal casi negro
+                            card: '#111827',     // Tarjetas
+                            surface: '#1a1f2e',  // Superficies
+                            border: '#1f2937',   // Bordes
+                            text: '#e5e7eb',     // Texto principal
+                            muted: '#9ca3af',    // Texto secundario
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Aplicar tema inmediatamente
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            }
+        })();
+    </script>
+    
+    <style>
+        /* ========== VARIABLES Y CONFIGURACIÓN GLOBAL ========== */
+        :root {
+            --transition-speed: 0.3s;
+        }
+        
+        * {
+            transition: background-color var(--transition-speed) ease, 
+                       border-color 0.2s ease, 
+                       color 0.2s ease, 
+                       box-shadow var(--transition-speed) ease;
+        }
+        
+        *:focus-visible {
+            outline: 3px solid #3b82f6;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        /* ========== MODO OSCURO (DEFAULT) - DRAMÁTICO Y ELEGANTE ========== */
+        html.dark body {
+            background-color: #0a0e17;
+            color: #e5e7eb;
+        }
+        
+        html.dark .dark-bg {
+            background-color: #0a0e17;
+        }
+        
+        html.dark .dark-card {
+            background-color: #111827;
+            border-color: #1f2937;
+        }
+        
+        html.dark .dark-surface {
+            background-color: #1a1f2e;
+        }
+        
+        html.dark .dark-border {
+            border-color: #1f2937;
+        }
+        
+        html.dark .dark-text {
+            color: #e5e7eb;
+        }
+        
+        html.dark .dark-muted {
+            color: #9ca3af;
+        }
+        
+        /* Navbar en modo oscuro */
+        html.dark nav {
+            background-color: rgba(10, 14, 23, 0.95) !important;
+            border-bottom: 1px solid rgba(31, 41, 55, 0.8) !important;
+            backdrop-filter: blur(20px);
+        }
+        
+        /* Hero en modo oscuro */
+        html.dark .hero-title {
+            background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+        
+        html.dark .hero-subtitle {
+            color: #60a5fa !important;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+        }
+        
+        html.dark .hero-location {
+            color: #d1d5db !important;
+        }
+        
+        html.dark .hero-location i {
+            color: #3b82f6;
+            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6));
+        }
+        
+        /* Secciones en modo oscuro */
+        html.dark section.bg-section {
+            background-color: #0d1117;
+        }
+        
+        /* Tarjetas en modo oscuro */
+        html.dark .skill-card {
+            background-color: #111827;
+            border: 1px solid #1f2937;
+        }
+        
+        html.dark .skill-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* ========== MODO CLARO - BRILLANTE Y LIMPIO ========== */
+        html.light body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        html.light nav {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Hero en modo claro */
+        html.light .hero-title {
+            background: linear-gradient(135deg, #1e293b 0%, #3b82f6 50%, #2563eb 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        html.light .hero-subtitle {
+            color: #2563eb !important;
+        }
+        
+        html.light .hero-location {
+            color: #64748b !important;
+        }
+        
+        html.light .hero-location i {
+            color: #3b82f6;
+        }
+        
+        /* Secciones en modo claro */
+        html.light section.bg-section {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        html.light section.bg-alt {
+            background-color: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        /* Tarjetas en modo claro */
+        html.light .skill-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        html.light .skill-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+        }
+        
+        html.light .dark-card {
+            background-color: #ffffff;
+            border-color: #e2e8f0;
+        }
+        
+        html.light .dark-surface {
+            background-color: #f8fafc;
+        }
+        
+        html.light .dark-text {
+            color: #1e293b;
+        }
+        
+        html.light .dark-muted {
+            color: #64748b;
+        }
+        
+        /* ========== COMPONENTES COMUNES ========== */
+        
+        /* Carrusel */
+        .swiper-slide {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            background-color: #111827;
+        }
+        
+        html.light .swiper-slide {
+            background-color: #e2e8f0;
+        }
+        
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .swiper-slide:hover img {
+            transform: scale(1.03);
+        }
+        
+        .swiper-pagination-bullet {
+            background-color: #6b7280 !important;
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: #3b82f6 !important;
+            opacity: 1;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        .swiper-button-prev-custom, 
+        .swiper-button-next-custom {
+            backdrop-filter: blur(8px);
+        }
+        
+        html.dark .swiper-button-prev-custom, 
+        html.dark .swiper-button-next-custom {
+            background-color: rgba(17, 24, 39, 0.9);
+            border: 1px solid #1f2937;
+        }
+        
+        html.light .swiper-button-prev-custom, 
+        html.light .swiper-button-next-custom {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .swiper-button-prev-custom:hover, 
+        .swiper-button-next-custom:hover {
+            background-color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            color: white !important;
+        }
+        
+        /* Gradiente para slides */
+        .slide-caption {
+            background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(0, 0, 0, 0.7) 40%, 
+                transparent 100%);
+        }
+        
+        /* Animaciones */
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+        
+        .animate-pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        /* Skill cards animation */
+        .skill-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Navbar scroll effect */
+        nav.scrolled {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        }
+        
+        html.light nav.scrolled {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Badges y etiquetas */
+        .badge-tech {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+        
+        html.dark .badge-tech {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+        }
+        
+        html.light .badge-tech {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+        }
+        
+        /* Enlaces de contacto */
+        .contact-link {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Botón volver arriba */
+        #back-to-top {
+            transition: all 0.3s ease;
+        }
+        
+        html.dark #back-to-top {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+        }
+        
+        html.light #back-to-top {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #3b82f6;
+        }
+        
+        #back-to-top:hover {
+            background-color: #3b82f6 !important;
+            color: white !important;
+            border-color: #3b82f6 !important;
+        }
+        
+        /* Estadísticas */
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        
+        html.dark .stat-card {
+            background-color: rgba(17, 24, 39, 0.5);
+            border: 1px solid #1f2937;
+        }
+        
+        html.light .stat-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Proyectos */
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        
+        html.dark .project-card {
+            background-color: #111827;
+            border: 1px solid #1f2937;
+        }
+        
+        html.light .project-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card:hover {
+            border-color: #3b82f6;
+        }
+        
+        html.dark .project-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        html.light .project-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Footer */
+        html.dark footer {
+            background-color: #0a0e17;
+            border-top: 1px solid #1f2937;
+        }
+        
+        html.light footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="dark-bg dark-text font-sans antialiased selection:bg-brand selection:text-white">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 transition-all" aria-label="Navegación principal">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="text-xl font-bold tracking-wider hover:text-brand transition-colors" aria-label="Inicio">
+                    <span class="dark-text">&lt;Alanfeer/&gt;</span>
+                </a>
+                
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex space-x-1">
+                        <a href="#sobre-mi" class="nav-link hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors dark-muted">Sobre Mí</a>
+                        <a href="#habilidades" class="nav-link hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors dark-muted">Habilidades</a>
+                        <a href="#proyectos" class="nav-link hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors dark-muted">Proyectos</a>
+                        <a href="#educacion" class="nav-link hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors dark-muted">Educación</a>
+                    </div>
+                    
+                    <button id="theme-toggle" 
+                            class="p-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-brand" 
+                            aria-label="Cambiar modo claro/oscuro"
+                            title="Cambiar tema">
+                        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header class="pt-32 pb-16 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="hero-title text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6">
+                Alanfeer José Liborius González
+            </h1>
+            
+            <p class="hero-subtitle text-2xl md:text-3xl mb-4 font-semibold">
+                Desarrollador Full-Stack | TSU en Informática
+            </p>
+            
+            <p class="hero-location text-lg mb-8 flex justify-center items-center gap-2">
+                <i class="fa-solid fa-location-dot animate-pulse-glow"></i> 
+                Puerto Cabello, Carabobo, Venezuela
+            </p>
+            
+            <div class="flex justify-center gap-4">
+                <a href="#contacto" class="bg-brand hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-all hover:shadow-lg hover:shadow-blue-500/25 transform hover:-translate-y-1 inline-block">
+                    Contáctame
+                </a>
+            </div>
+        </div>
+
+        <!-- Carrusel -->
+        <div class="w-full mt-6 mb-4">
+            <div class="flex items-center justify-between mb-4 px-1">
+                <h2 class="text-2xl font-bold dark-text flex items-center gap-2">
+                    <i class="fa-regular fa-images text-brand"></i> Galería de proyectos
+                </h2>
+                <div class="flex gap-2">
+                    <div class="swiper-button-prev-custom w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition shadow-lg" 
+                         aria-label="Proyecto anterior" tabindex="0" role="button">
+                        <i class="fas fa-chevron-left text-sm"></i>
+                    </div>
+                    <div class="swiper-button-next-custom w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition shadow-lg" 
+                         aria-label="Proyecto siguiente" tabindex="0" role="button">
+                        <i class="fas fa-chevron-right text-sm"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper mySwiper rounded-2xl shadow-2xl overflow-hidden border border-gray-700/50">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide relative">
+                        <img src="https://picsum.photos/id/20/1200/500" alt="Visual Radio - Portal de streaming" class="w-full h-72 md:h-96 object-cover" loading="lazy">
+                        <div class="slide-caption absolute bottom-0 left-0 right-0 p-6 text-left z-10">
+                            <h3 class="text-white font-bold text-2xl md:text-3xl drop-shadow-lg">Visual Radio · Radiomaster</h3>
+                            <p class="text-gray-200 text-base md:text-lg max-w-2xl">Portal de streaming con transmisión de audio/video en tiempo real y diseño responsivo.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide relative">
+                        <img src="https://picsum.photos/id/26/1200/500" alt="Sistema POS - Facturación automatizada" class="w-full h-72 md:h-96 object-cover" loading="lazy">
+                        <div class="slide-caption absolute bottom-0 left-0 right-0 p-6 text-left z-10">
+                            <h3 class="text-white font-bold text-2xl md:text-3xl drop-shadow-lg">POS + Inventario Multi‑usuario</h3>
+                            <p class="text-gray-200 text-base md:text-lg">Facturación automatizada, control de roles (RBAC) y reportes dinámicos.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide relative">
+                        <img src="https://picsum.photos/id/0/1200/500" alt="Dashboard Analítico" class="w-full h-72 md:h-96 object-cover" loading="lazy">
+                        <div class="slide-caption absolute bottom-0 left-0 right-0 p-6 text-left z-10">
+                            <h3 class="text-white font-bold text-2xl md:text-3xl drop-shadow-lg">Panel de Análisis Empresarial</h3>
+                            <p class="text-gray-200 text-base md:text-lg">Métricas en tiempo real, gráficos interactivos y toma de decisiones.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide relative">
+                        <img src="https://picsum.photos/id/30/1200/500" alt="API REST - Seguridad avanzada" class="w-full h-72 md:h-96 object-cover" loading="lazy">
+                        <div class="slide-caption absolute bottom-0 left-0 right-0 p-6 text-left z-10">
+                            <h3 class="text-white font-bold text-2xl md:text-3xl drop-shadow-lg">API REST & Seguridad Avanzada</h3>
+                            <p class="text-gray-200 text-base md:text-lg">Implementación de autenticación JWT, cifrado y buenas prácticas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sobre Mí -->
+    <section id="sobre-mi" class="py-16 bg-section" aria-label="Sobre mí">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold dark-text mb-8 flex items-center gap-3">
+                <i class="fa-solid fa-user text-brand"></i> Sobre Mí
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="stat-card p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-brand mb-1">+5</div>
+                    <div class="text-sm dark-muted">Años de experiencia</div>
+                </div>
+                <div class="stat-card p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-brand mb-1">+10</div>
+                    <div class="text-sm dark-muted">Proyectos completados</div>
+                </div>
+                <div class="stat-card p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-brand mb-1">Full-Stack</div>
+                    <div class="text-sm dark-muted">Desarrollo end-to-end</div>
+                </div>
+            </div>
+            <p class="text-lg leading-relaxed mb-4 dark-text">
+                Soy un TSU en Informática y Desarrollador Full-Stack con sólida experiencia técnica en la creación de arquitecturas de software desde cero. Me especializo en tecnologías como PHP, JavaScript, MySQL y la administración de entornos Linux.
+            </p>
+            <p class="text-lg leading-relaxed dark-text">
+                Mi enfoque principal es la optimización de procesos comerciales y la implementación de soluciones eficientes. Actualmente, me mantengo en aprendizaje continuo integrando lenguajes de alto rendimiento como Rust. Además, destaco por mi adaptabilidad, resolución de problemas lógicos y capacidad para liderar proyectos.
+            </p>
+        </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades" class="py-16 bg-alt" aria-label="Habilidades técnicas">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold dark-text mb-10 text-center">Habilidades Técnicas</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="skill-card p-6 rounded-xl transition-all">
+                    <h3 class="text-xl font-semibold text-brand mb-4 pb-2 border-b dark-border">Lenguajes</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 dark-text">
+                            <i class="fa-brands fa-php text-indigo-400 w-6"></i> PHP (Vanilla)
+                            <span class="ml-auto badge-tech">Avanzado</span>
+                        </li>
+                        <li class="flex items-center gap-2 dark-text">
+                            <i class="fa-brands fa-js text-yellow-400 w-6"></i> JavaScript
+                            <span class="ml-auto badge-tech">Avanzado</span>
+                        </li>
+                        <li class="flex items-center gap-2 dark-text">
+                            <i class="fa-brands fa-python text-blue-400 w-6"></i> Python
+                            <span class="ml-auto badge-tech">Intermedio</span>
+                        </li>
+                        <li class="flex items-center gap-2 dark-text">
+                            <i class="fa-solid fa-gears text-orange-500 w-6"></i> Rust
+                            <span class="ml-auto badge-tech">Aprendizaje</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-card p-6 rounded-xl transition-all">
+                    <h3 class="text-xl font-semibold text-brand mb-4 pb-2 border-b dark-border">Frontend</h3>
+                    <ul class="space-y-3 dark-text">
+                        <li><i class="fa-brands fa-html5 text-orange-500 w-6"></i> HTML5 & CSS3</li>
+                        <li><i class="fa-solid fa-code text-blue-400 w-6"></i> Tailwind CSS</li>
+                        <li><i class="fa-solid fa-paint-brush text-pink-400 w-6"></i> Diseño UI/UX</li>
+                        <li><i class="fa-solid fa-mobile-screen text-green-400 w-6"></i> Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-card p-6 rounded-xl transition-all">
+                    <h3 class="text-xl font-semibold text-brand mb-4 pb-2 border-b dark-border">Backend & BD</h3>
+                    <ul class="space-y-3 dark-text">
+                        <li><i class="fa-solid fa-database text-blue-300 w-6"></i> MySQL (Relacional)</li>
+                        <li><i class="fa-solid fa-server text-green-400 w-6"></i> APIs RESTful</li>
+                        <li><i class="fa-solid fa-shield-halved text-red-400 w-6"></i> Seguridad JWT/OAuth</li>
+                        <li><i class="fa-solid fa-users-gear text-purple-400 w-6"></i> RBAC y Sesiones</li>
+                    </ul>
+                </div>
+                <div class="skill-card p-6 rounded-xl transition-all">
+                    <h3 class="text-xl font-semibold text-brand mb-4 pb-2 border-b dark-border">Infraestructura</h3>
+                    <ul class="space-y-3 dark-text">
+                        <li><i class="fa-brands fa-linux w-6"></i> Linux (Mint/Debian)</li>
+                        <li><i class="fa-brands fa-git-alt text-orange-400 w-6"></i> Git & GitHub</li>
+                        <li><i class="fa-solid fa-globe text-blue-400 w-6"></i> Apache/Nginx</li>
+                        <li><i class="fa-solid fa-broadcast-tower text-red-400 w-6"></i> Streaming RTMP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos" class="py-16 bg-section" aria-label="Proyectos destacados">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold dark-text mb-10 text-center">Proyectos Destacados</h2>
+            
+            <div class="space-y-8">
+                <div class="project-card p-8 rounded-2xl flex flex-col md:flex-row gap-8 transition-all">
+                    <div class="md:w-1/3">
+                        <div class="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-tower-broadcast text-brand text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold dark-text mb-2">Portal de Streaming "Visual Radio"</h3>
+                        <p class="text-brand font-semibold mb-2">Radiomaster</p>
+                        <p class="text-sm dark-muted mb-4"><i class="fa-solid fa-briefcase"></i> Desarrollador Web</p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="badge-tech">PHP</span>
+                            <span class="badge-tech">JavaScript</span>
+                            <span class="badge-tech">Streaming</span>
+                            <span class="badge-tech">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <ul class="list-disc list-inside space-y-3 dark-text">
+                            <li>Diseño y desarrollo integral desde cero de un portal web basado en el concepto de "Visual Radio".</li>
+                            <li>Implementación de servicios de streaming para transmisión de audio y video en tiempo real.</li>
+                            <li>Creación de interfaces de usuario (UI) responsivas, mejorando la experiencia del oyente en móviles.</li>
+                            <li>Optimización técnica del sitio para asegurar estabilidad durante picos de audiencia y alto tráfico.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card p-8 rounded-2xl flex flex-col md:flex-row gap-8 transition-all">
+                    <div class="md:w-1/3">
+                        <div class="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-cash-register text-brand text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold dark-text mb-2">Sistema POS y Gestión de Inventario</h3>
+                        <p class="text-brand font-semibold mb-2">Panadería Lusitana Siglo XXI C.A.</p>
+                        <p class="text-sm dark-muted mb-4"><i class="fa-solid fa-briefcase"></i> Desarrollador de Software</p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="badge-tech">PHP</span>
+                            <span class="badge-tech">MySQL</span>
+                            <span class="badge-tech">RBAC</span>
+                            <span class="badge-tech">POS</span>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <ul class="list-disc list-inside space-y-3 dark-text">
+                            <li>Desarrolló un sistema web integral de Punto de Venta (POS) y gestión de inventario automatizado.</li>
+                            <li>Implementó un sistema de gestión Multi-Usuario con control de acceso basado en roles (RBAC) y permisos.</li>
+                            <li>Automatizó la generación de facturación, reportes de ventas e inventario, eliminando procesos manuales.</li>
+                            <li>Diseñó la arquitectura de la base de datos en MySQL para manejar transacciones diarias y auditoría.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educación -->
+    <section id="educacion" class="py-16 bg-alt" aria-label="Formación académica">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold dark-text mb-10">Formación Académica</h2>
+            <div class="space-y-6">
+                <div class="project-card p-6 rounded-xl w-full max-w-2xl mx-auto text-left transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-graduation-cap text-brand"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand">Ingeniería en Informática</h3>
+                            <p class="dark-muted mt-1">Universidad Politécnica Territorial de Puerto Cabello (UPTPC)</p>
+                            <span class="inline-block mt-2 badge-tech bg-yellow-500/20 text-yellow-300">En curso</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card p-6 rounded-xl w-full max-w-2xl mx-auto text-left transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-award text-brand"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand">TSU en Informática</h3>
+                            <p class="dark-muted mt-1">Universidad Politécnica Territorial de Puerto Cabello (UPTPC)</p>
+                            <span class="inline-block mt-2 badge-tech bg-green-500/20 text-green-300">Completado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12">
+                <h3 class="text-xl font-bold dark-text mb-4">Certificaciones</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="px-4 py-2 skill-card rounded-full text-sm border transition-all cursor-default dark-muted">
+                        <i class="fa-solid fa-check-circle text-brand mr-1"></i> Scrum Fundamentals
+                    </span>
+                    <span class="px-4 py-2 skill-card rounded-full text-sm border transition-all cursor-default dark-muted">
+                        <i class="fa-solid fa-check-circle text-brand mr-1"></i> Linux Server Admin
+                    </span>
+                    <span class="px-4 py-2 skill-card rounded-full text-sm border transition-all cursor-default dark-muted">
+                        <i class="fa-solid fa-check-circle text-brand mr-1"></i> Seguridad Web OWASP
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacto -->
+    <footer id="contacto" class="pt-16 pb-8" aria-label="Contacto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold dark-text mb-4">¿Listo para colaborar?</h2>
+            <p class="dark-muted mb-8 max-w-2xl mx-auto">Estoy abierto a nuevas oportunidades y colaboraciones. No dudes en contactarme para discutir tu próximo proyecto.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-12 flex-wrap">
+                <a href="mailto:alanfeerliboriu@gmail.com" class="contact-link flex items-center gap-3 dark-muted hover:text-brand transition-all text-lg group">
+                    <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center group-hover:bg-brand/20 transition-all">
+                        <i class="fa-solid fa-envelope text-2xl text-brand"></i>
+                    </div>
+                    alanfeerliboriu@gmail.com
+                </a>
+                <a href="tel:+584244145442" class="contact-link flex items-center gap-3 dark-muted hover:text-brand transition-all text-lg group">
+                    <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center group-hover:bg-brand/20 transition-all">
+                        <i class="fa-solid fa-phone text-2xl text-brand"></i>
+                    </div>
+                    +58-4244145442
+                </a>
+                <a href="https://www.alanfeer.com" target="_blank" rel="noopener noreferrer" class="contact-link flex items-center gap-3 dark-muted hover:text-brand transition-all text-lg group">
+                    <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center group-hover:bg-brand/20 transition-all">
+                        <i class="fa-solid fa-globe text-2xl text-brand"></i>
+                    </div>
+                    www.alanfeer.com
+                </a>
+            </div>
+
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+            <p class="dark-muted text-sm mt-8">
+                &copy; 2026 Alanfeer José Liborius González. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Botón volver arriba -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-all opacity-0 invisible z-50 hover:scale-110" 
+            aria-label="Volver arriba" title="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // ==================== MODO CLARO / OSCURO ====================
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function applyTheme(theme) {
+            const html = document.documentElement;
+            
+            if (theme === 'light') {
+                html.classList.add('light');
+                html.classList.remove('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeIcon.style.color = '#eab308';
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeIcon.style.color = '#fbbf24';
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+        
+        // Tema inicial
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+        
+        // Toggle del tema
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+        });
+
+        // ==================== CARRUSEL ====================
+        const swiper = new Swiper('.mySwiper', {
+            loop: true,
+            spaceBetween: 0,
+            slidesPerView: 1,
+            autoplay: { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true },
+            pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true },
+            navigation: { nextEl: '.swiper-button-next-custom', prevEl: '.swiper-button-prev-custom' },
+            effect: 'slide',
+            speed: 700,
+            keyboard: { enabled: true, onlyInViewport: true },
+            preloadImages: false,
+            lazy: { loadPrevNext: true, loadPrevNextAmount: 1 },
+        });
+        
+        // ==================== SCROLL SUAVE ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === "#" || targetId === "") return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // ==================== BOTÓN VOLVER ARRIBA ====================
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        function toggleBackToTopButton() {
+            if (window.scrollY > 400) {
+                backToTopButton.style.opacity = '1';
+                backToTopButton.style.visibility = 'visible';
+            } else {
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.visibility = 'hidden';
+            }
+        }
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // ==================== NAVBAR SCROLL ====================
+        const nav = document.querySelector('nav');
+        
+        function updateNavOnScroll() {
+            if (window.scrollY > 10) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            toggleBackToTopButton();
+        }
+        
+        window.addEventListener('scroll', updateNavOnScroll, { passive: true });
+        
+        // ==================== ANIMACIONES DE ENTRADA ====================
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+                
+                if (section.getBoundingClientRect().top < window.innerHeight) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Estado inicial
+        updateNavOnScroll();
+        
+        console.log('%c🌙 Modo Oscuro Mejorado %c| %c☀️ Modo Claro Brillante %c| %c🚀 Alanfeer Liborius', 
+                    'color: #60a5fa; font-weight: bold;', 
+                    '', 
+                    'color: #eab308; font-weight: bold;', 
+                    '', 
+                    'color: #3b82f6; font-weight: bold;');
+    </script>
+</body>
+</html>
