@@ -12,13 +12,6 @@
     <meta name="description" content="Portafolio profesional de Alanfeer José Liborius González - Desarrollador Full-Stack especializado en PHP, JavaScript, MySQL y Linux.">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N39R4ZTK');</script>
-<!-- End Google Tag Manager -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -237,89 +230,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         /* ========== COMPONENTES COMUNES ========== */
         
-        /* Carrusel */
-        .swiper-slide {
-            border-radius: 1.5rem;
-            overflow: hidden;
-            position: relative;
-            background-color: #111827;
-        }
-        
-        html.light .swiper-slide {
-            background-color: #e2e8f0;
-        }
-        
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        
-        .swiper-slide:hover img {
-            transform: scale(1.03);
-        }
-        
-        .swiper-pagination-bullet {
-            background-color: #6b7280 !important;
-            opacity: 0.5;
-        }
-        
-        .swiper-pagination-bullet-active {
-            background-color: #3b82f6 !important;
-            opacity: 1;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-        
-        .swiper-button-prev-custom, 
-        .swiper-button-next-custom {
-            backdrop-filter: blur(8px);
-        }
-        
-        html.dark .swiper-button-prev-custom, 
-        html.dark .swiper-button-next-custom {
-            background-color: rgba(17, 24, 39, 0.9);
-            border: 1px solid #1f2937;
-        }
-        
-        html.light .swiper-button-prev-custom, 
-        html.light .swiper-button-next-custom {
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid #e2e8f0;
-        }
-        
-        .swiper-button-prev-custom:hover, 
-        .swiper-button-next-custom:hover {
-            background-color: #3b82f6 !important;
-            border-color: #3b82f6 !important;
-            color: white !important;
-        }
-        
-        /* Gradiente para slides */
-        .slide-caption {
-            background: linear-gradient(to top, 
-                rgba(0, 0, 0, 0.95) 0%, 
-                rgba(0, 0, 0, 0.7) 40%, 
-                transparent 100%);
-        }
-        
-        /* Animaciones */
-        @keyframes pulse-glow {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.7;
-                transform: scale(1.1);
-            }
-        }
-        
-        .animate-pulse-glow {
-            animation: pulse-glow 2s infinite;
-        }
-        
+
         /* Skill cards animation */
         .skill-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -444,10 +355,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </style>
 </head>
 <body class="dark-bg dark-text font-sans antialiased selection:bg-brand selection:text-white">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N39R4ZTK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
     <!-- Navegación -->
     <nav class="fixed w-full z-50 transition-all" aria-label="Navegación principal">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -498,59 +406,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
 
-        <!-- Carrusel -->
-        <div class="w-full mt-6 mb-4">
-            <div class="flex items-center justify-between mb-4 px-1">
-                <h2 class="text-2xl font-bold dark-text flex items-center gap-2">
-                    <i class="fa-regular fa-images text-brand"></i> Galería de proyectos
-                </h2>
-                <div class="flex gap-2">
-                    <div class="swiper-button-prev-custom w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition shadow-lg" 
-                         aria-label="Proyecto anterior" tabindex="0" role="button">
-                        <i class="fas fa-chevron-left text-sm"></i>
-                    </div>
-                    <div class="swiper-button-next-custom w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition shadow-lg" 
-                         aria-label="Proyecto siguiente" tabindex="0" role="button">
-                        <i class="fas fa-chevron-right text-sm"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper mySwiper rounded-2xl shadow-2xl overflow-hidden border border-gray-700/50">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide relative">
-                        <img src="https://picsum.photos/id/20/1200/500" alt="Visual Radio - Portal de streaming" class="w-full h-72 md:h-96 object-cover" loading="lazy">
-                        <div class="slide-caption absolute bottom-0 left-0 right-0 p-6 text-left z-10">
-                            <h3 class="text-white font-bold text-2xl md:text-3xl drop-shadow-lg">Visual Radio · Radiomaster</h3>
-                            <p class="text-gray-200 text-base md:text-lg max-w-2xl">Portal de streaming con transmisión de audio/video en tiempo real y diseño responsivo.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide relative">
-                        <img src="https://picsum.photos/id/26/1200/500" alt="Sistema POS - Facturación automatizada" class="w-full h-72 md:h-96 object-cover" loading="lazy">
-                        <div class="slide-caption absolute bottom-0 left-0 right-0 p-6 text-left z-10">
-                            <h3 class="text-white font-bold text-2xl md:text-3xl drop-shadow-lg">POS + Inventario Multi‑usuario</h3>
-                            <p class="text-gray-200 text-base md:text-lg">Facturación automatizada, control de roles (RBAC) y reportes dinámicos.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide relative">
-                        <img src="https://picsum.photos/id/0/1200/500" alt="Dashboard Analítico" class="w-full h-72 md:h-96 object-cover" loading="lazy">
-                        <div class="slide-caption absolute bottom-0 left-0 right-0 p-6 text-left z-10">
-                            <h3 class="text-white font-bold text-2xl md:text-3xl drop-shadow-lg">Panel de Análisis Empresarial</h3>
-                            <p class="text-gray-200 text-base md:text-lg">Métricas en tiempo real, gráficos interactivos y toma de decisiones.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide relative">
-                        <img src="https://picsum.photos/id/30/1200/500" alt="API REST - Seguridad avanzada" class="w-full h-72 md:h-96 object-cover" loading="lazy">
-                        <div class="slide-caption absolute bottom-0 left-0 right-0 p-6 text-left z-10">
-                            <h3 class="text-white font-bold text-2xl md:text-3xl drop-shadow-lg">API REST & Seguridad Avanzada</h3>
-                            <p class="text-gray-200 text-base md:text-lg">Implementación de autenticación JWT, cifrado y buenas prácticas.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </header>
-
     <!-- Sobre Mí -->
     <section id="sobre-mi" class="py-16 bg-section" aria-label="Sobre mí">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -559,7 +414,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div class="stat-card p-4 rounded-lg text-center">
-                    <div class="text-3xl font-bold text-brand mb-1">1</div>
+                    <div class="text-3xl font-bold text-brand mb-1">+1</div>
                     <div class="text-sm dark-muted">Años de experiencia</div>
                 </div>
                 <div class="stat-card p-4 rounded-lg text-center">
@@ -675,7 +530,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <i class="fa-solid fa-cash-register text-brand text-2xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold dark-text mb-2">Sistema POS y Gestión de Inventario</h3>
-                        <p class="text-brand font-semibold mb-2">Panadería Lusitana Siglo XXI C.A.</p>
+                        <p class="text-brand font-semibold mb-2">Proyecto Academico</p>
                         <p class="text-sm dark-muted mb-4"><i class="fa-solid fa-briefcase"></i> Desarrollador de Software</p>
                         <div class="flex flex-wrap gap-2 mt-4">
                             <span class="badge-tech">PHP</span>
@@ -702,18 +557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold dark-text mb-10">Formación Académica</h2>
             <div class="space-y-6">
-                <div class="project-card p-6 rounded-xl w-full max-w-2xl mx-auto text-left transition-all">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                            <i class="fa-solid fa-graduation-cap text-brand"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-brand">Ingeniería en Informática</h3>
-                            <p class="dark-muted mt-1">Universidad Politécnica Territorial de Puerto Cabello (UPTPC)</p>
-                            <span class="inline-block mt-2 badge-tech bg-yellow-500/20 text-yellow-300">En curso</span>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="project-card p-6 rounded-xl w-full max-w-2xl mx-auto text-left transition-all">
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
@@ -728,7 +572,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </div>
             <div class="mt-12">
-                <h3 class="text-xl font-bold dark-text mb-4">Certificaciones</h3>
+
+                             <!--Todavia no Tengo Diplomado -->
+                <!-- <h3 class="text-xl font-bold dark-text mb-4">Certificaciones</h3> 
                 <div class="flex flex-wrap justify-center gap-4">
                     <span class="px-4 py-2 skill-card rounded-full text-sm border transition-all cursor-default dark-muted">
                         <i class="fa-solid fa-check-circle text-brand mr-1"></i> Scrum Fundamentals
@@ -742,7 +588,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- Footer / Contacto -->
     <footer id="contacto" class="pt-16 pb-8" aria-label="Contacto">
@@ -767,7 +613,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center group-hover:bg-brand/20 transition-all">
                         <i class="fa-solid fa-globe text-2xl text-brand"></i>
                     </div>
-                    www.alanfeer.com
+                   
                 </a>
             </div>
 
@@ -775,14 +621,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="#" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="#" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/alanfeer-liborius-gonzalez-936b6637a/"  target="_blank" rel="noopener noreferrer" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="LinkedIn">
                     <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="#" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="dark-muted hover:text-brand text-2xl transition-all hover:scale-110 inline-block" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
                 </a>
             </div>
 
@@ -834,35 +674,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             applyTheme(newTheme);
         });
 
-        // ==================== CARRUSEL ====================
-        const swiper = new Swiper('.mySwiper', {
-            loop: true,
-            spaceBetween: 0,
-            slidesPerView: 1,
-            autoplay: { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true },
-            pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true },
-            navigation: { nextEl: '.swiper-button-next-custom', prevEl: '.swiper-button-prev-custom' },
-            effect: 'slide',
-            speed: 700,
-            keyboard: { enabled: true, onlyInViewport: true },
-            preloadImages: false,
-            lazy: { loadPrevNext: true, loadPrevNextAmount: 1 },
-        });
-        
-        // ==================== SCROLL SUAVE ====================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if(targetId === "#" || targetId === "") return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    const offset = 80;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-            });
-        });
+       
         
         // ==================== BOTÓN VOLVER ARRIBA ====================
         const backToTopButton = document.getElementById('back-to-top');
